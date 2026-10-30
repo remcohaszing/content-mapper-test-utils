@@ -1,0 +1,38 @@
+{
+  "name": "content-mapper-test-utils",
+  "version": "0.0.0",
+  "description": "Test utilities for TypeScript content mappers",
+  "keywords": [
+    "typescript",
+    "content-mapper",
+    "test",
+    "testing"
+  ],
+  "homepage": "https://github.com/remcohaszing/content-mapper-test-utils#readme",
+  "bugs": "https://github.com/remcohaszing/content-mapper-test-utils/issues",
+  "repository": "remcohaszing/content-mapper-test-utils",
+  "funding": "https://github.com/sponsors/remcohaszing",
+  "license": "MIT",
+  "author": "Remco Haszing <remcohaszing@gmail.com>",
+  "type": "module",
+  "exports": "./dist/content-mapper-test-utils.js",
+  "files": [],
+  "scripts": {
+    "prepack": "tsc --build",
+    "pretest": "tsc --build",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "@types/mdast": "^4.0.0",
+    "mdast-util-gfm": "^3.0.0",
+    "mdast-util-to-markdown": "^2.0.0",
+    "snapshot-fixtures": "^1.0.0"
+  },
+  "devDependencies": {
+    "@remcohaszing/eslint": "^14.0.0",
+    "prettier": "^3.0.0",
+    "remark-cli": "^12.0.0",
+    "remark-preset-remcohaszing": "^3.0.0",
+    "typescript": "^6.0.0"
+  }
+}

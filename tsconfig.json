@@ -1,0 +1,11 @@
+{
+  "references": [{ "path": "./tsconfig.build.json" }],
+  "exclude": ["src"],
+  "compilerOptions": {
+    "allowImportingTsExtensions": true,
+    "module": "nodenext",
+    "noEmit": true,
+    "types": ["node"],
+    "verbatimModuleSyntax": true
+  }
+}
