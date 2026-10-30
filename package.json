@@ -25,11 +25,16 @@
     "pretest": "tsc --build",
     "test": "node --test"
   },
+  "allowScripts": {
+    "unrs-resolver": false
+  },
   "dependencies": {
     "@types/mdast": "^4.0.0",
+    "filter-obj": "^6.0.0",
     "mdast-util-gfm": "^3.0.0",
     "mdast-util-to-markdown": "^2.0.0",
-    "snapshot-fixtures": "^1.0.0"
+    "snapshot-fixtures": "^1.0.0",
+    "vscode-jsonrpc": "^10.0.0"
   },
   "devDependencies": {
     "@remcohaszing/eslint": "^14.0.0",

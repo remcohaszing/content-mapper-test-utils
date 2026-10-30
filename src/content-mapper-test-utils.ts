@@ -1,3 +1,4 @@
+export { createContentMapper } from './content-mapper.js'
 export { transformResultToMarkdown } from './markdown.js'
 export type {
   CloseProjectParams,
