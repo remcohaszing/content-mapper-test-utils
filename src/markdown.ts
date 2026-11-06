@@ -9,11 +9,13 @@ import type {
   TableRow
 } from 'mdast'
 
-import type { MappedOutput, SpanMapFeature, SpanMapping, TransformResult } from './protocol.js'
+import type { MappedOutput, SpanMapping, TransformResult } from './protocol.js'
 
 import { gfmToMarkdown } from 'mdast-util-gfm'
 import { toMarkdown } from 'mdast-util-to-markdown'
 import { assertEqual } from 'snapshot-fixtures'
+
+import { SpanMapFeature } from './protocol.js'
 
 const allFeatures = [
   'Hover',
@@ -172,14 +174,31 @@ function mappedOutputToMdast(
     content.push(heading('Verbatim mappings', headingDepth))
 
     for (const mapping of grouped[0]) {
-      const [generatedStart, generatedLength, originalStart, originalLength] = mapping
+      const [
+        generatedStart,
+        generatedLength,
+        originalStart,
+        originalLength,
+        ,
+        features = SpanMapFeature.All
+      ] = mapping
       const generatedSlice = text.slice(generatedStart, generatedStart + generatedLength)
       const originalSlice = original.slice(originalStart, originalStart + originalLength)
+      let meta = `${generatedStart}-${generatedLength} ${originalStart}-${originalLength}`
+      if (features & SpanMapFeature.All) {
+        meta += ' All'
+      } else {
+        for (const [index, value] of allFeatures.entries()) {
+          if (features & (1 << index)) {
+            meta += ` ${value}`
+          }
+        }
+      }
       assertEqual(generatedSlice, originalSlice)
       content.push({
         type: 'code',
         lang: 'jsx',
-        meta: mapping.join(' '),
+        meta,
         value: generatedSlice
       })
     }
