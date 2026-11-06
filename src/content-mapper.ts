@@ -220,8 +220,6 @@ export async function createContentMapper(
       }
     },
 
-    [Symbol.dispose]() {
-      dispose()
-    }
+    [Symbol.dispose]: dispose
   }
 }
